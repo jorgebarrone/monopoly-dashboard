@@ -8,13 +8,13 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="../bower_components/app-layout/app-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../app-layout/app-layout.html">
+<link rel="import" href="../app-layout/app-scroll-effects/effects/waterfall.html">
 
-<link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../neon-animation/neon-animation.html">
 
 <link rel="import" href="my-monopoly-player-card.html">
 <link rel="import" href="my-monopoly-player-panel.html">
@@ -68,7 +68,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header slot="header" reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div class="title" main-title>POLYMER CONTACTS</div>
           </app-toolbar>
         </app-header>
         <my-monopoly-player-panel active-player="[[activePlayer]]"></my-monopoly-player-panel>
@@ -98,14 +97,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           players: {
             type: Array,
             value: [
-              {id: 0, alias: 'Equipo Verde', amount: 10000, status: 'playing', properties: ['Guatemala', 'El Salvador', 'Honduras']},
-              {id: 1, alias: 'Equipo Azul', amount: 10001, status: 'playing', properties: ['Nicaragua', 'Peru', 'Bolivia']},
-              {id: 2, alias: 'Equipo Amarillo', amount: 10002, status: 'playing', properties: ['Ecuador', 'Costa Rica', 'Venezuela']},
-              {id: 3, alias: 'BANCO', amount: 10003, status: 'playing', properties: ['Canada', 'USA', 'Mexico', 'Guatemala', 'Belice']},
-              {id: 4, alias: 'Equipo Rojo', amount: 10004, status: 'playing', properties: ['Cuba', 'Costa Rica', 'Rep. Dominicana']},
-              {id: 5, alias: 'Equipo Morado', amount: 20004, status: 'playing', properties: ['Colombia', 'Chile', 'Urugua']},
-              {id: 6, alias: 'Equipo Gris', amount: 30004, status: 'playing', properties: ['Paraguay', 'Brasil', 'Argentina']},
-              {id: 7, alias: 'Equipo Cafe', amount: 40004, status: 'playing', properties: ['Puerto Rico', 'Haiti']},
+              {id: 0, alias: 'Equipo Verde', amount: 10000, status: 'playing'},
+              {id: 1, alias: 'Equipo Azul', amount: 10001, status: 'playing'},
+              {id: 2, alias: 'Equipo Amarillo', amount: 10002, status: 'playing'},
+              {id: 3, alias: 'BANCO', amount: 10003, status: 'playing'},
+              {id: 4, alias: 'Equipo Rojo', amount: 10004, status: 'playing'},
+              {id: 5, alias: 'Equipo Morado', amount: 20004, status: 'playing'},
+              {id: 6, alias: 'Equipo Gris', amount: 30004, status: 'playing'},
+              {id: 7, alias: 'Equipo Cafe', amount: 40004, status: 'playing'},
             ]
           },
           activePlayer: {
