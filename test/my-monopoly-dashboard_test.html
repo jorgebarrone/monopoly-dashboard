@@ -4,36 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>monopoly-dashboard test</title>
+    <title>my-monopoly-dashboard test</title>
 
     <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../monopoly-dashboard.html">
+    <link rel="import" href="../my-monopoly-dashboard.html">
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <monopoly-dashboard></monopoly-dashboard>
+        <my-monopoly-dashboard></my-monopoly-dashboard>
       </template>
     </test-fixture>
 
     <test-fixture id="ChangedPropertyTestFixture">
       <template>
-        <monopoly-dashboard prop1="new-prop1"></monopoly-dashboard>
+        <my-monopoly-dashboard prop1="new-prop1"></my-monopoly-dashboard>
       </template>
     </test-fixture>
 
     <script>
-      suite('monopoly-dashboard', () => {
+      suite('my-monopoly-dashboard', () => {
 
         test('instantiating the element with default properties works', () => {
           const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'monopoly-dashboard');
+          assert.equal(element.prop1, 'my-monopoly-dashboard');
           const elementShadowRoot = element.shadowRoot;
           const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello monopoly-dashboard!');
+          assert.equal(elementHeader.innerHTML, 'Hello my-monopoly-dashboard!');
         });
 
         test('setting a property on the element works', () => {

@@ -1,7 +1,7 @@
 {
-  "name": "monopoly-dashboard",
+  "name": "my-monopoly-dashboard",
   "description": "Players list, and detail of transactions",
-  "main": "monopoly-dashboard.html",
+  "main": "my-monopoly-dashboard.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "app-layout": "PolymerElements/app-layout#^2.1.1",
