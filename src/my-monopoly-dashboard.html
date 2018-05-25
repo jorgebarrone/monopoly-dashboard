@@ -18,6 +18,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animation.html">
 
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+
 <link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
 
@@ -33,9 +37,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex-wrap: wrap;
         justify-content: space-around;
         padding: 10px;
+      },
+      .container {
+        background-color: #38d7dc;
+        padding: 1em 1em 1em 1em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
       }
-      .dialog {
-
+      paper-card {
+        cursor: pointer;
+        margin: 10px 2px 0 0;
+        /* height: 200px; */
+        text-align: left;
+        box-sizing: border-box;
+        width: 200px;
+      }
+      .cyan {
+        background-color: #008081;
+        color: #ddd;
+      }
+      .dark {
+        background-color: rgba(96, 125, 139, 0.5);
+        color: #ddd;
       }
 
     </style>
@@ -48,12 +74,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </template>
 
           <paper-dialog id="dialog">
-            <h2>[[activePlayer.alias]]</h2>
-            <paper-input label="Amount" value="[[activePlayer.amount]]">
-            </paper-input>
-            <div class="buttons">
-              <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
-            </div>
+            <div>
+              <paper-card heading="[[activePlayer.alias]]" class="cyan" style="color: #fff;" elevation="1">
+                <div class="card-actions">
+                  <paper-icon-button icon="communication:call" style="color: #ddd;"></paper-icon-button>
+                  <span>Amount: $[[activePlayer.amount]]</span>
+                  </br>
+                  <span>Status: [[activePlayer.status]]</span>
+                </div>
+
+                <paper-icon-button icon="communication:call" style="color: #ddd;"></paper-icon-button>
+                <paper-card class="dark">
+                  <div class="card-content">
+                    <p>Properties:</p>
+                    <template is="dom-repeat" items="[[titles]]" as="title">
+                      <div class="container">
+                        <paper-item>[[title.name]]</paper-item>
+                      </div>
+                    </template>
+                  </div>
+                </paper-card>
+              </div>
+
+              </paper-card>
+              </br>
+              <div class="buttons" style="text-align: right;">
+                <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+              </div>
           </paper-dialog>
 
   </template>
@@ -99,6 +146,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               {id: 0, name: 'Argentina', price: 100, owner: 4}
             ]
           },
+          titles: {
+            type: Array,
+            value: []
+          },
           activePlayer: {
             type: Object,
             value: {},
@@ -108,11 +159,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _playerSelected(event) {
         this.activePlayer = this.players[event.target.playerId];
+        let titles = this.properties;
+        let player = this.activePlayer.id;
+        this.titles = titles.filter(val => {
+          return val.owner == player;
+        });
         this.$.dialog.open();
-      }
-
-      _openDialog() {
-        this.$.dialog.open()
       }
 
     }
