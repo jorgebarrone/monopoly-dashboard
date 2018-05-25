@@ -14,16 +14,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-monopoly-player-card">
   <template>
-    <style include="shared-styles">
+    <style>
       :host {
         display: flex;
         padding: 5px;
       }
-      p {
+      .myp {
         display: flex;
         flex-wrap: wrap;
       }
-      paper-card {
+      .my-paper-card {
         cursor: pointer;
         margin: 10px 2px 0 0;
         /* height: 200px; */
@@ -39,7 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div>
-      <paper-card heading="[[player.alias]]" class="cyan" elevation="1">
+      <paper-card heading="[[player.alias]]" class="my-paper-card cyan" elevation="1">
         <div class="card-actions">
           <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
           <span>Amount: $[[player.amount]]</span>

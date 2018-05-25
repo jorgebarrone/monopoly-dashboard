@@ -31,7 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-monopoly-dashboard">
   <template>
-    <style include="shared-styles">
+    <style>
       :host {
         display: flex;
         flex-wrap: wrap;
@@ -47,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         align-items: center;
         align-content: center;
       }
-      paper-card {
+      .my-paper-card {
         cursor: pointer;
         margin: 10px 2px 0 0;
         /* height: 200px; */
@@ -75,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <paper-dialog id="dialog">
             <div>
-              <paper-card heading="[[activePlayer.alias]]" class="cyan" style="color: #fff;" elevation="1">
+              <paper-card heading="[[activePlayer.alias]]" class="my-paper-card cyan" style="color: #fff;" elevation="1">
                 <div class="card-actions">
                   <paper-icon-button icon="communication:call" style="color: #ddd;"></paper-icon-button>
                   <span>Amount: $[[activePlayer.amount]]</span>
@@ -84,7 +84,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
 
                 <paper-icon-button icon="communication:call" style="color: #ddd;"></paper-icon-button>
-                <paper-card class="dark">
+                <paper-card class="my-paper-card dark">
                   <div class="card-content">
                     <p>Properties:</p>
                     <template is="dom-repeat" items="[[titles]]" as="title">
