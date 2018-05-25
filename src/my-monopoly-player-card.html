@@ -1,0 +1,75 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="my-monopoly-player-card">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        padding: 5px;
+        --paper-card-background-color:#eee;
+      }
+      .myp {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .my-paper-card {
+        cursor: pointer;
+        margin: 10px 2px 0 0;
+        /* height: 200px; */
+        text-align: left;
+        box-sizing: border-box;
+        width: 200px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5PX grey;
+      }
+
+
+
+
+
+    </style>
+
+    <div>
+      <paper-card heading="[[player.alias]]" class="my-paper-card" elevation="1">
+        <div class="card-content">
+          <paper-icon-button icon="communication:call" style="color:white;"></paper-icon-button>
+          <span>Amount: $[[player.amount]]</span>
+          </br>
+          <span>Status: [[player.status]]</span>
+        </div>
+        <!-- <article> </br> Status: [[player.status]]</article> -->
+      </paper-card>
+    </div>
+
+  </template>
+
+  <script>
+    class MyMonopolyPlayerCard extends Polymer.Element {
+      static get is() { return 'my-monopoly-player-card'; }
+
+      static get properties() {
+        return {
+          player: {
+            type: Object,
+            value: {}
+          }
+        };
+      }
+
+    }
+
+    window.customElements.define(MyMonopolyPlayerCard.is, MyMonopolyPlayerCard);
+  </script>
+</dom-module>
