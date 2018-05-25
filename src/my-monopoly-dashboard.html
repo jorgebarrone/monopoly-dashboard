@@ -37,6 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex-wrap: wrap;
         justify-content: space-around;
         padding: 10px;
+        --paper-card-background-color:#eee;
       },
       .container {
         background-color: #38d7dc;
@@ -55,14 +56,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-sizing: border-box;
         width: 200px;
       }
-      .cyan {
-        background-color: #008081;
-        color: #ddd;
-      }
+
       .dark {
         background-color: rgba(96, 125, 139, 0.5);
-        color: #ddd;
       }
+
 
     </style>
           <template is="dom-repeat" items="[[players]]" as="player">
@@ -75,15 +73,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <paper-dialog id="dialog">
             <div>
-              <paper-card heading="[[activePlayer.alias]]" class="my-paper-card cyan" style="color: #fff;" elevation="1">
+              <paper-card heading="[[activePlayer.alias]]" class="my-paper-card"  elevation="1">
                 <div class="card-actions">
-                  <paper-icon-button icon="communication:call" style="color: #ddd;"></paper-icon-button>
+                  <paper-icon-button icon="communication:call" ></paper-icon-button>
                   <span>Amount: $[[activePlayer.amount]]</span>
                   </br>
                   <span>Status: [[activePlayer.status]]</span>
                 </div>
 
-                <paper-icon-button icon="communication:call" style="color: #ddd;"></paper-icon-button>
+                <paper-icon-button icon="communication:call"></paper-icon-button>
                 <paper-card class="my-paper-card dark">
                   <div class="card-content">
                     <p>Properties:</p>
