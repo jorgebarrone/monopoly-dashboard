@@ -8,118 +8,57 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="../app-layout/app-layout.html">
-<link rel="import" href="../app-layout/app-scroll-effects/effects/waterfall.html">
-
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../neon-animation/neon-animation.html">
-
-<link rel="import" href="my-monopoly-player-card.html">
-<link rel="import" href="my-monopoly-player-panel.html">
-
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-monopoly-dashboard">
+<dom-module id="my-monopoly-player-card">
   <template>
     <style include="shared-styles">
       :host {
-        display: block;
-        padding: 10px;
+        display: flex;
+        padding: 5px;
+      }
+      p {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      paper-card {
+        color: orange;
+        cursor: pointer;
+        margin: 10px 2px 0 0;
+        /* height: 200px; */
+        text-align: left;
+        width: 200px;
       }
 
-      app-drawer {
-        --app-drawer-content-container: {
-           background-color: #fafafa;
-         }
-      }
-      paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
-      .title {
-        font-size: 30px;
-        font-weight: bold;
-      }
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-        display: none;
-      }
-      app-toolbar {
-        text-align: center;
-      }
-      paper-button {
-        background-color: #4785d1;
-        color: white;
-        height: 45px;
-        margin: 30px 20px 0 10px;;
-        width: 90%;
-      }
-      paper-dialog {
-        padding: 25px 90px;
-      }
-      .scroll-contacts {
-        height: 100%;
-        overflow: auto;
-      }
 
     </style>
-    <app-drawer-layout>
-      <app-header-layout>
-        <app-header slot="header" reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-          </app-toolbar>
-        </app-header>
-        <my-monopoly-player-panel active-player="[[activePlayer]]"></my-monopoly-player-panel>
-      </app-header-layout>
-      <app-drawer id="drawer" align="end" slot="drawer" swipe-open="[[narrow]]" >
-        <app-toolbar>Player List</app-toolbar>
-        <div class="scroll-contacts">
-          <template is="dom-repeat" items="[[players]]" as="player">
-            <my-monopoly-player-card
-              player="[[player]]"
-              player-id="[[index]]"
-              on-click="_playerSelected"
-            ></my-monopoly-player-card>
-          </template>
-        </div>
-      </app-drawer>
-    </app-drawer-layout>
+
+    <paper-card elevation="1">
+      <div class="card-content">
+        <h1>[[player.alias]]</h1>
+          <article>Amount: $[[player.amount]] </br> Status: [[player.status]]</article>
+      </div>
+    </paper-card>
 
   </template>
 
   <script>
-    class MyMonopolyDashboard extends Polymer.Element {
-      static get is() { return 'my-monopoly-dashboard'; }
+    class MyMonopolyPlayerCard extends Polymer.Element {
+      static get is() { return 'my-monopoly-player-card'; }
 
       static get properties() {
         return {
-          players: {
-            type: Array,
-            value: [
-              {id: 0, alias: 'Equipo Verde', amount: 10000, status: 'playing'},
-              {id: 1, alias: 'Equipo Azul', amount: 10001, status: 'playing'},
-              {id: 2, alias: 'Equipo Amarillo', amount: 10002, status: 'playing'},
-              {id: 3, alias: 'BANCO', amount: 10003, status: 'playing'},
-              {id: 4, alias: 'Equipo Rojo', amount: 10004, status: 'playing'},
-              {id: 5, alias: 'Equipo Morado', amount: 20004, status: 'playing'},
-              {id: 6, alias: 'Equipo Gris', amount: 30004, status: 'playing'},
-              {id: 7, alias: 'Equipo Cafe', amount: 40004, status: 'playing'},
-            ]
-          },
-          activePlayer: {
+          player: {
             type: Object,
-            value: {},
+            value: {}
           }
         };
       }
 
-      _playerSelected(event) {
-        this.activePlayer = this.players[event.target.playerId];
-      }
-
     }
 
-    window.customElements.define(MyMonopolyDashboard.is, MyMonopolyDashboard);
+    window.customElements.define(MyMonopolyPlayerCard.is, MyMonopolyPlayerCard);
   </script>
 </dom-module>
