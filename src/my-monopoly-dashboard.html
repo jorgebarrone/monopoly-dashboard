@@ -1,0 +1,122 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
+
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+
+<link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+
+<link rel="import" href="my-monopoly-player-card.html">
+
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="my-monopoly-dashboard">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px;
+      }
+      .dialog {
+
+      }
+
+    </style>
+          <template is="dom-repeat" items="[[players]]" as="player">
+            <my-monopoly-player-card
+              player="[[player]]"
+              player-id="[[index]]"
+              on-click="_playerSelected"
+            ></my-monopoly-player-card>
+          </template>
+
+          <paper-dialog id="dialog">
+            <h2>[[activePlayer.alias]]</h2>
+            <paper-input label="Amount" value="[[activePlayer.amount]]">
+            </paper-input>
+            <div class="buttons">
+              <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+            </div>
+          </paper-dialog>
+
+  </template>
+
+  <script>
+    class MyMonopolyDashboard extends Polymer.Element {
+      static get is() { return 'my-monopoly-dashboard'; }
+
+      static get properties() {
+        return {
+          players: {
+            type: Array,
+            value: [
+              {id: 0, alias: 'Equipo Verde', amount: 10000, status: 'playing'},
+              {id: 1, alias: 'Equipo Azul', amount: 10001, status: 'playing'},
+              {id: 2, alias: 'Equipo Amarillo', amount: 10002, status: 'playing'},
+              {id: 3, alias: 'BANCO', amount: 10003, status: 'playing'}
+            ]
+          },
+          properties: {
+            type: Array,
+            value: [
+              {id: 0, name: 'Canada', price: 100, owner: 0},
+              {id: 1, name: 'USA', price: 100, owner: 0},
+              {id: 2, name: 'Mexico', price: 100, owner: 0},
+              {id: 3, name: 'Guatemala', price: 100, owner: 0},
+              {id: 4, name: 'El Salvador', price: 100, owner: 1},
+              {id: 5, name: 'Belice', price: 100, owner: 1},
+              {id: 6, name: 'Honduras', price: 100, owner: 1},
+              {id: 7, name: 'Nicaraga', price: 100, owner: 1},
+              {id: 8, name: 'Costa Rica', price: 100, owner: 3},
+              {id: 9, name: 'Cuba', price: 100, owner: 3},
+              {id: 10, name: 'Puerto Rico', price: 100, owner: 3},
+              {id: 11, name: 'Rep. Dominicana', price: 100, owner: 3},
+              {id: 12, name: 'Peru', price: 100, owner: 4},
+              {id: 13, name: 'Colombia', price: 100, owner: 4},
+              {id: 14, name: 'Venezuela', price: 100, owner: 4},
+              {id: 15, name: 'Ecuador', price: 100, owner: 4},
+              {id: 16, name: 'Chile', price: 100, owner: 4},
+              {id: 17, name: 'Paraguay', price: 100, owner: 4},
+              {id: 18, name: 'Uruguay', price: 100, owner: 4},
+              {id: 0, name: 'Brasil', price: 100, owner: 4},
+              {id: 0, name: 'Argentina', price: 100, owner: 4}
+            ]
+          },
+          activePlayer: {
+            type: Object,
+            value: {},
+          }
+        };
+      }
+
+      _playerSelected(event) {
+        this.activePlayer = this.players[event.target.playerId];
+        this.$.dialog.open();
+      }
+
+      _openDialog() {
+        this.$.dialog.open()
+      }
+
+    }
+
+    window.customElements.define(MyMonopolyDashboard.is, MyMonopolyDashboard);
+  </script>
+</dom-module>
